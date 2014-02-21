@@ -11,11 +11,5 @@ for preporation at this point
 Skyda is unplanned at this point, I am working on a design
 plan with tasks...
 
-right now, add any object that you think a game could use
-at this point
-
-Email me for contribution access
-
-
--Brandan Haertel
-
+See issues for tasks that need doing
+Enhancments are new features that need to be added.
