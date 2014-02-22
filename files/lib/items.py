@@ -5,35 +5,18 @@
 # item for gameplay that holds a potion and its properies.
 #**********************************************************
 class Potion():
-  def __init__(self, c, l, s):
-    self.cure = c
-    self.level = l
-    self.strength = s
+  # build potions with all values, these values do not change.
+  def __init__(self, h, l, s):
+    self.health = c       #health increase value
+    self.level = l      #level increase value
+    self.strength = s   #strength increase value
 
-  # get the potions cure property
-  def getCure(self):
-    return self.cure
-
-  # get the potions level gain property
-  def getLevel(self):
-    return self.level
-
-  # get the potions strength gain property
-  def getStrength(self):
-    return self.strength
-
-  # set the potions cure value
+  # set a players stats based on the potions properties 
   def use(self, player):
-    player.setHealth(player.getHealth() + self.cure)
+    player.setHealth(player.getHealth() + self.health)
     player.setLevel(player.getLevel() + self.level)
     player.setStrength(player.getStrength() + self.strength)
 
-
-#### STANDARD POTIONS ####
-potion_cure = Potion(20, 0, 0)
-potion_level = Potion(0, 1, 0)
-potion_strength = Potion(0, 0, 2)
-buddhas_potion = Potion(18, 1, 6)
 
 print('potions made')
 #**********************************************************
@@ -42,8 +25,6 @@ print('potions made')
 # corisponding damage that weapon deals.
 #**********************************************************
 class Weapon():
-  name = ''
-  damage = 0
   def __init__(self, n, d):
     self.name = n
     self.damage = d
@@ -60,11 +41,10 @@ class Weapon():
   def getDamage(self):
     return self.damage
 
-  #### DEPRECIATED ####
-  def use(self):
-    return self.getDamage()
-
 #**********************************************************
 # make some standard potions
 #**********************************************************
-
+potion_cure = Potion(20, 0, 0)
+potion_level = Potion(0, 1, 0)
+potion_strength = Potion(0, 0, 2)
+buddhas_potion = Potion(18, 1, 6)
