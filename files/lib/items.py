@@ -5,9 +5,6 @@
 # item for gameplay that holds a potion and its properies.
 #**********************************************************
 class Potion():
-  cure = 0
-  level = 0
-  strength = 0
   def __init__(self, c, l, s):
     self.cure = c
     self.level = l
@@ -26,19 +23,10 @@ class Potion():
     return self.strength
 
   # set the potions cure value
-  def setCure(self, c):
-    self.cure = c
-    return
-
-  # set the potions level gain value
-  def setLevel(self, l):
-    self.level = l
-    return
-
-  # set the potions strength gain value
-  def setStrength(self, s):
-    self.strength = s
-    return
+  def use(self, player):
+    player.setHealth(player.getHealth() + self.cure)
+    player.setLevel(player.getLevel() + self.level)
+    player.setStrength(player.getStrength() + self.strength)
 
 
 #### STANDARD POTIONS ####

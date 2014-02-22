@@ -7,24 +7,6 @@ from items import Potion, buddhas_potion
 #**********************************************************
 class Player():
 
-  #### PLAYER NAME ####
-  name = None
-
-  #### LEVEL STATS ####
-  level = None
-  health = None
-  experience = None
-  alive = False
-
-  #### ITEMS ####
-  invetory = None
-  potion = None
-  potion_bool = False
-  gold = None
-
-  #### STATS ####
-  srength = None
-
   def __init__(self):
     self.name = 'Renaldo Moon'
     self.level = 1
@@ -139,9 +121,7 @@ class Player():
 
   #use potion for health, set potion to None
   def usePotion(self):
-    self.health += self.potion.getCure()
-    self.level += self.potion.getLevel()
-    self.strength += self.potion.getStrength()
+    self.potion.use(self)
     if self.health > (self.level * 10):
       self.health = self.level * 10
     self.potion_bool = False
