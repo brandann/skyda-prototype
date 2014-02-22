@@ -7,7 +7,7 @@
 class Potion():
   # build potions with all values, these values do not change.
   def __init__(self, h, l, s):
-    self.health = c       #health increase value
+    self.health = h       #health increase value
     self.level = l      #level increase value
     self.strength = s   #strength increase value
 
