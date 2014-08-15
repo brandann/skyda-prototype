@@ -49,14 +49,14 @@
      <Compile Include="Assets\Camera.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\MapBuilder.cs" />
-     <Compile Include="Assets\Mapper.cs" />
-     <Compile Include="Assets\Resources\Scripts\Pond.cs" />
+     <Compile Include="Assets\Resources\Scripts\GrassTile.cs" />
+     <Compile Include="Assets\Resources\Scripts\MapGenerator.cs" />
+     <Compile Include="Assets\Resources\Scripts\PondGenerator.cs" />
+     <Compile Include="Assets\Resources\Scripts\SandTile.cs" />
      <Compile Include="Assets\Resources\Scripts\Tokens.cs" />
-     <Compile Include="Assets\grasstilescript.cs" />
-     <Compile Include="Assets\sandtilescript.cs" />
+     <Compile Include="Assets\Resources\Scripts\TreeTile.cs" />
+     <Compile Include="Assets\Resources\Scripts\WaterTile.cs" />
      <Compile Include="Assets\tile.cs" />
-     <Compile Include="Assets\treetilescript.cs" />
-     <Compile Include="Assets\watertilescript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

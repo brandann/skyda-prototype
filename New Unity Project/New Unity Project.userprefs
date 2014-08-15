@@ -1,8 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Map2\Assets\Mapper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Map2\Assets\SandTile.cs">
     <Files>
-      <File FileName="..\Map2\Assets\Mapper.cs" Line="21" Column="3" />
+      <File FileName="..\Map2\Assets\SandTile.cs" Line="16" Column="1" />
+      <File FileName="..\Map2\Assets\TreeTile.cs" Line="16" Column="1" />
+      <File FileName="..\Map2\Assets\WaterTile.cs" Line="16" Column="1" />
+      <File FileName="..\Map2\Assets\GrassTile.cs" Line="16" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

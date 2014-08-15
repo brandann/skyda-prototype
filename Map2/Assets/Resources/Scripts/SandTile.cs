@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class treetilescript : MonoBehaviour {
+public class SandTile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

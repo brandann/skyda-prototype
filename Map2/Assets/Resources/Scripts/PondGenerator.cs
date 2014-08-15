@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pond{
+public class PondGenerator{
 
 	private char [,] map;
 	private int width;
@@ -13,7 +13,7 @@ public class Pond{
 	
 	char token;
 	
-	public Pond(){
+	public PondGenerator(){
 		Tokens Token = new Tokens();
 		token = Token.getWATER();
 	}

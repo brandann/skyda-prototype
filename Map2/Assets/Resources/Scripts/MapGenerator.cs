@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class Mapper {
+public class MapGenerator {
 
 	private const int WIDTH = 1000;
 	private const int HEIGHT = 1000;
@@ -9,7 +9,7 @@ public class Mapper {
 	private Tokens token;
 	
 	
-	public Mapper(){
+	public MapGenerator(){
 		token = new Tokens();
 		map = new char[WIDTH,HEIGHT];
 	}
@@ -33,7 +33,7 @@ public class Mapper {
 	
 	private void makePonds(){
 		int numberOfPonds = (int) Random.Range(Mathf.Sqrt(WIDTH),WIDTH);
-		Pond pond = new Pond();
+		PondGenerator pond = new PondGenerator();
 		for(int i = 0; i < numberOfPonds; i++){
 			// make pond
 			char[,] temp = pond.getPond((int) Random.Range(5,WIDTH*.1f),(int) Random.Range(5,WIDTH*.1f));
