@@ -46,17 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Camera.cs" />
-     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\MapBuilder.cs" />
-     <Compile Include="Assets\Resources\Scripts\GrassTile.cs" />
-     <Compile Include="Assets\Resources\Scripts\MapGenerator.cs" />
-     <Compile Include="Assets\Resources\Scripts\PondGenerator.cs" />
-     <Compile Include="Assets\Resources\Scripts\SandTile.cs" />
+     <Compile Include="Assets\Resources\Scripts\Camera.cs" />
+     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Resources\Scripts\MapGenerator\BuildingGenerator.cs" />
+     <Compile Include="Assets\Resources\Scripts\MapGenerator\CityGenerator.cs" />
+     <Compile Include="Assets\Resources\Scripts\MapGenerator\MapGenerator.cs" />
+     <Compile Include="Assets\Resources\Scripts\MapGenerator\PondGenerator.cs" />
+     <Compile Include="Assets\Resources\Scripts\Tiles\GrassTile.cs" />
+     <Compile Include="Assets\Resources\Scripts\Tiles\SandTile.cs" />
+     <Compile Include="Assets\Resources\Scripts\Tiles\TreeTile.cs" />
+     <Compile Include="Assets\Resources\Scripts\Tiles\WaterTile.cs" />
      <Compile Include="Assets\Resources\Scripts\Tokens.cs" />
-     <Compile Include="Assets\Resources\Scripts\TreeTile.cs" />
-     <Compile Include="Assets\Resources\Scripts\WaterTile.cs" />
-     <Compile Include="Assets\tile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

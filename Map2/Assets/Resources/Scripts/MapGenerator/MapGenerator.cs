@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class MapGenerator {
+public class MapGenerator{
 
 	private const int WIDTH = 1000;
 	private const int HEIGHT = 1000;
@@ -19,6 +19,8 @@ public class MapGenerator {
 		makePonds();
 		makeSand();
 		makeTrees();
+		makeBuildings();
+		makeCity();
 		saveMap();
 		return map;
 	}
@@ -102,16 +104,31 @@ public class MapGenerator {
 		}
 	}
 	
+	private void makeBuildings(){
+		int bwidth = 10;
+		int bheight = 5;
+		BuildingGenerator bg = new BuildingGenerator();
+		
+		char[,] house = bg.getBuilding(bwidth,bheight);
+		
+		for(int i = 0; i < bwidth; i++){
+			for(int j = 0; j < bheight; j++){
+				map[i,j] = house[i,j];
+			}
+		}
+	}
+	
+	private void makeCity(){
+		CityGenerator c = new CityGenerator();
+		char[,] city = c.getCity(150,150);
+	}
+	
 	private void saveMap(){
 		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\pond.txt"))
 		{
-			for(int i = 0; i < map.GetLength(0); i++){
-				for(int j = 0; j < map.GetLength(1); j++){
-					file.Write(map[i,j]);
-//					if(map[i,j] == 'a')
-//						file.Write("X");
-//					else
-//						file.Write("_");
+			for(int i = map.GetLength(0) - 1; i >= 0; i--){
+				for(int j = 0; j < map.GetLength(1); j++){ //for(int j = map.GetLength(1) - 1; j >= 0; j--){
+					file.Write(map[j,i]);
 				}
 				file.WriteLine("");
 			}

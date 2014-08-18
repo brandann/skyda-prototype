@@ -5,10 +5,10 @@ public class Tokens {
 	public const char GRASS= '_';	
 	public const char TREE= '0';	
 	public const char SAND= '*';	
-//	public const char = 'e';	
-//	public const char = 'f';	
-//	public const char = 'g';	
-//	public const char = 'h';	
+	public const char HOUSE = '=';	
+	public const char DOOR = '+';	
+	public const char PAVER = 'g';	
+	public const char HOUSEWALL = 'h';	
 //	public const char = 'i';	
 //	public const char = 'j';	
 //	public const char = 'k';	
@@ -34,10 +34,10 @@ public class Tokens {
 	public char getGRASS() {return GRASS;}
 	public char getTREE() {return TREE;}
 	public char getSAND() {return SAND;}
-//	public char get() {return ;}
-//	public char get() {return ;}
-//	public char get() {return ;}
-//	public char get() {return ;}
+	public char getHOUSE() {return HOUSE;}
+	public char getDOOR() {return DOOR;}
+	public char getPAVER() {return PAVER;}
+	public char getHOUSEWALL() {return HOUSEWALL;}
 //	public char get() {return ;}
 //	public char get() {return ;}
 //	public char get() {return ;}
