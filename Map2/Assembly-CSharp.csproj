@@ -46,8 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MapBuilder.cs" />
+     <Compile Include="Assets\MapManager.cs" />
      <Compile Include="Assets\Resources\Scripts\Camera.cs" />
+     <Compile Include="Assets\Resources\Scripts\CameraBoundry.cs" />
      <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
      <Compile Include="Assets\Resources\Scripts\HeroBehavior.cs" />
      <Compile Include="Assets\Resources\Scripts\MapGenerator\BuildingGenerator.cs" />

@@ -1,14 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-public class MapBuilder : MonoBehaviour {
+public class MapManager : MonoBehaviour {
 	
 	private char[,] map;
+	ArrayList mapobjects;
 	private int xpos = 0;
 	private int ypos = 0;
 	
-	private int SCREEN_HEIGHT = 9;
-	private int SCREEN_WIDTH = 16;
+	private int SCREEN_HEIGHT = 10;
+	private int SCREEN_WIDTH = 17;
 	
 	private GameObject waterObject;
 	private GameObject grassObject;
@@ -24,8 +25,11 @@ public class MapBuilder : MonoBehaviour {
 		sandObject = Resources.Load("Prefabs/sandtile") as GameObject;
 		treeObject = Resources.Load("Prefabs/treetile") as GameObject;
 		
+		mapobjects = new ArrayList();
+		
 		generateMap();
-		MoveMap(0,0);
+		
+		MoveMap((map.GetLength(0)/17)/2,(map.GetLength(1)/10)/2);
 	}
 	
 	// Update is called once per frame
@@ -39,8 +43,15 @@ public class MapBuilder : MonoBehaviour {
 	}
 	
 	public void MoveMap(int dx, int dy){
-		ypos += dy * SCREEN_HEIGHT;
-		xpos += dx * SCREEN_HEIGHT;
+		ypos += dy * (SCREEN_HEIGHT-1);
+		xpos += dx * (SCREEN_WIDTH-1);
+		
+		print ("loc: " + xpos + ", " + ypos);
+		
+		foreach ( GameObject obj in mapobjects){
+			Destroy(obj.gameObject);
+		}
+		
 		LoadMapScreen(xpos, ypos);
 	}
 	
@@ -49,8 +60,8 @@ public class MapBuilder : MonoBehaviour {
 		for(int i = 0; i < SCREEN_WIDTH; i++){
 			for(int j = 0; j < SCREEN_HEIGHT; j++){
 				char tile = map[xpos+i,ypos+j];
-				print ("Tile: " + i + ", " + j);
-				print ("Map: " + xpos+i + ", " + ypos+j);
+				//print ("Tile: " + i + ", " + j);
+				//print ("Map: " + xpos+i + ", " + ypos+j);
 				int lx = i+1;
 				int ly = j+1;
 				switch(tile){
@@ -131,6 +142,7 @@ public class MapBuilder : MonoBehaviour {
 		GrassTile spawnedParticle = e.GetComponent<GrassTile>();
 		if(spawnedParticle != null) {
 			e.transform.position = new Vector3(x,y,0);
+			mapobjects.Add(e);
 		}
 		else {
 			print ("error creating grass");
@@ -143,6 +155,7 @@ public class MapBuilder : MonoBehaviour {
 		WaterTile spawnedParticle = e.GetComponent<WaterTile>();
 		if(spawnedParticle != null) {
 			e.transform.position = new Vector3(x,y,0);
+			mapobjects.Add(e);
 		}
 		else {
 			print ("error creating water");
@@ -155,6 +168,7 @@ public class MapBuilder : MonoBehaviour {
 		SandTile spawnedParticle = e.GetComponent<SandTile>();
 		if(spawnedParticle != null) {
 			e.transform.position = new Vector3(x,y,0);
+			mapobjects.Add(e);
 		}
 		else {
 			print ("error creating sand");
@@ -167,6 +181,7 @@ public class MapBuilder : MonoBehaviour {
 		TreeTile spawnedParticle = e.GetComponent<TreeTile>();
 		if(spawnedParticle != null) {
 			e.transform.position = new Vector3(x,y,0);
+			mapobjects.Add(e);
 		}
 		else {
 			print ("error creating tree");
