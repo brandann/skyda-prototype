@@ -2,105 +2,131 @@ using UnityEngine;
 using System.Collections;
 
 public class MapBuilder : MonoBehaviour {
-
-	public int worldwidth;
-	public int worldheight;
-	private int startX;
-	private int startY;
 	
-	char[,] map;
+	private char[,] map;
+	private int xpos = 0;
+	private int ypos = 0;
 	
-	GameObject waterObject;
-	GameObject grassObject;
-	GameObject sandObject;
-	GameObject treeObject;
+	private int SCREEN_HEIGHT = 9;
+	private int SCREEN_WIDTH = 16;
 	
-	Tokens tok = new Tokens();
+	private GameObject waterObject;
+	private GameObject grassObject;
+	private GameObject sandObject;
+	private GameObject treeObject;
+	
+	private Tokens tok = new Tokens();
 	
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	public void generateMap(char[,] map){
 		waterObject = Resources.Load("Prefabs/watertile") as GameObject;
 		grassObject = Resources.Load("Prefabs/grasstile") as GameObject;
 		sandObject = Resources.Load("Prefabs/sandtile") as GameObject;
 		treeObject = Resources.Load("Prefabs/treetile") as GameObject;
 		
-		this.map = map;
-		
-		startX = 0;
-		startY = 0;
-		worldwidth = map.GetLength(0);
-		worldheight = map.GetLength(1);
-		worldwidth--;  //im not sure why, remove if this seems buggy
-		worldheight--; //im not sure why, remove if this seems buggy
-	
-		print ("Initilizing World...");
-		
-		// make ponds
-		print ("Digging Ponds...");
-		
-		// make grass tiles
-		print ("Planting Grass...");
-		
-		// make sand where water and grass meet
-		print ("Spreading Sand...");
-		
-		print ("Growing Trees...");
-		
-		// make map objects from map[,]
-		print("Finalizing World...");
-		
-		print("World Is Initilized!");
-		
-		// move camera to the middle of world
-		Camera camera = GameObject.Find ("Main Camera").GetComponent<Camera>();
-		camera.transform.position = new Vector3(worldwidth/2, worldheight/2, -10);
+		generateMap();
+		MoveMap(0,0);
 	}
 	
-	// match all the tokens with prefabs, create pre fabs and place on map
-	void loadTextures(){
+	// Update is called once per frame
+	void Update () {
 		
-		// make big grass instaed of lots of little ones
-		loadBigGrass();
-		
-		// load the rest of the textures
-		for(int i = 0; i < worldwidth; i++){
-			for(int j = 0; j < worldheight; j++){
-				if (map[i,j] == tok.getGRASS()){
-					//do nothing
-					//loadGrass(i,j);
-				}
-				else if (map[i,j] == tok.getWATER()){
-					loadWater(i + startX , j + startY);
-				}
-				else if (map[i,j] == tok.getSAND()){
-					loadSand(i + startX , j + startY);
-				}
-				else if (map[i,j] == tok.getTREE()){
-					loadTree(i + startX , j + startY);
+	}
+	
+	public void generateMap(){
+		MapGenerator m = new MapGenerator();
+		map = m.getMap();	
+	}
+	
+	public void MoveMap(int dx, int dy){
+		ypos += dy * SCREEN_HEIGHT;
+		xpos += dx * SCREEN_HEIGHT;
+		LoadMapScreen(xpos, ypos);
+	}
+	
+	private void LoadMapScreen(int x, int y){
+		Tokens t = new Tokens();
+		for(int i = 0; i < SCREEN_WIDTH; i++){
+			for(int j = 0; j < SCREEN_HEIGHT; j++){
+				char tile = map[xpos+i,ypos+j];
+				print ("Tile: " + i + ", " + j);
+				print ("Map: " + xpos+i + ", " + ypos+j);
+				int lx = i+1;
+				int ly = j+1;
+				switch(tile){
+				case('X'):
+					loadWATER(lx,ly);
+					break;
+				case('_'):
+					loadGRASS(lx,ly);
+					break;
+				case('0'):
+					loadTREE(lx,ly);
+					break;
+				case('*'):
+					loadSAND(lx,ly);
+					break;
+				/*case('='):
+					loadHOUSE(lx,ly);
+					break;
+				case('+'):
+					loadDOOR(lx,ly);
+					break;
+				case('g'):
+					loadPAVER(lx,ly);
+					break;
+				case('h'):
+					loadHOUSEWALL(lx,ly);
+					break;*/
+				default:
+					loadGRASS(lx,ly);
+					break;
 				}
 			}
 		}
 	}
+
+#region TileObjects
+/*
+	public const char WATER = 'X';	
+	public const char GRASS= '_';	
+	public const char TREE= '0';	
+	public const char SAND= '*';	
+	public const char HOUSE = '=';	
+	public const char DOOR = '+';	
+	public const char PAVER = 'g';	
+	public const char HOUSEWALL = 'h';	
 	
-	// make 1 grass object and scale it to the 
-	void loadBigGrass(){
-		GameObject e = Instantiate(grassObject) as GameObject;
-		GrassTile spawnedParticle = e.GetComponent<GrassTile>();
-		if(spawnedParticle != null) {
-			e.transform.position = new Vector3(worldwidth/2,worldheight/2 - 1.5f,0);
-			e.transform.localScale = new Vector3(worldwidth,worldheight,1);
-		}
-		else {
-			print ("error creating big grass");
-		}
-	}
+	case(t.getWATER()):
+		loadWATER(i,j);
+		break;
+	case(t.getGRASS()):
+		loadGRASS(i,j);
+		break;
+	case(t.getTREE()):
+		loadTREE(i,j);
+		break;
+	case(t.getSAND()):
+		loadSAND(i,j);
+		break;
+	case(t.getHOUSE()):
+		loadHOUSE(i,j);
+		break;
+	case(t.getDOOR()):
+		loadDOOR(i,j);
+		break;
+	case(t.getPAVER()):
+		loadPAVER(i,j);
+		break;
+	case(t.getHOUSEWALL()):
+		loadHOUSEWALL(i,j);
+		break;
+		
+*/
+	
 	
 	// instantiate grass object
-	void loadGrass(int x, int y){
+	void loadGRASS(int x, int y){
 		GameObject e = Instantiate(grassObject) as GameObject;
 		GrassTile spawnedParticle = e.GetComponent<GrassTile>();
 		if(spawnedParticle != null) {
@@ -112,7 +138,7 @@ public class MapBuilder : MonoBehaviour {
 	}
 	
 	// instantiate water object
-	void loadWater(int x, int y){
+	void loadWATER(int x, int y){
 		GameObject e = Instantiate(waterObject) as GameObject;
 		WaterTile spawnedParticle = e.GetComponent<WaterTile>();
 		if(spawnedParticle != null) {
@@ -124,7 +150,7 @@ public class MapBuilder : MonoBehaviour {
 	}
 	
 	// instantiate sand object
-	void loadSand(int x, int y){
+	void loadSAND(int x, int y){
 		GameObject e = Instantiate(sandObject) as GameObject;
 		SandTile spawnedParticle = e.GetComponent<SandTile>();
 		if(spawnedParticle != null) {
@@ -136,7 +162,7 @@ public class MapBuilder : MonoBehaviour {
 	}
 	
 	// instantiate tree object
-	void loadTree(int x, int y){
+	void loadTREE(int x, int y){
 		GameObject e = Instantiate(treeObject) as GameObject;
 		TreeTile spawnedParticle = e.GetComponent<TreeTile>();
 		if(spawnedParticle != null) {
@@ -147,4 +173,22 @@ public class MapBuilder : MonoBehaviour {
 		}
 	}
 	
+	void loadHOUSE(int x, int y){
+	
+	}
+	
+	void loadDOOR(int x, int y){
+	
+	}
+	
+	void loadPAVER(int x, int y){
+	
+	}
+	
+	void loadHOUSEWALL(int x, int y){
+	
+	}
+	
+
+#endregion
 }
