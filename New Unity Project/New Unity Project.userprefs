@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Map2\Assets\SandTile.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../Map2/Assets/Resources/Scripts/MapGenerator/CityGenerator.cs">
     <Files>
-      <File FileName="..\Map2\Assets\SandTile.cs" Line="16" Column="1" />
-      <File FileName="..\Map2\Assets\TreeTile.cs" Line="16" Column="1" />
-      <File FileName="..\Map2\Assets\WaterTile.cs" Line="16" Column="1" />
-      <File FileName="..\Map2\Assets\GrassTile.cs" Line="16" Column="1" />
+      <File FileName="../Map2/Assets/Resources/Scripts/MapGenerator/CityGenerator.cs" Line="41" Column="44" />
+      <File FileName="../Map2/Assets/Resources/Scripts/MapGenerator/MapGenerator.cs" Line="23" Column="5" />
+      <File FileName="../Map2/Assets/Resources/Scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="../Map2/Assets/Resources/Scripts/Camera.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

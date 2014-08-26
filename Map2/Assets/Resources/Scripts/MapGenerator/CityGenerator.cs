@@ -38,7 +38,7 @@ public class CityGenerator{
 		
 		// start with random sized buildings
 		for(int i = 0; i < map.GetLength(0); i++){
-			for(int j = 0; j < map.GetLength(1); j){
+			for(int j = 0; j < map.GetLength(1); j++){
 				
 				// check bulding within map bounds
 				if((i + (w*m1)) >= map.GetLength(0)){

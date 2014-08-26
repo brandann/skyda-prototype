@@ -20,7 +20,7 @@ public class MapGenerator{
 		makeSand();
 		makeTrees();
 		makeBuildings();
-		makeCity();
+		//makeCity();
 		saveMap();
 		return map;
 	}
